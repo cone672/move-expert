@@ -539,7 +539,6 @@ body {
         padding: var(--spacing-4) var(--spacing-3);
         text-align: center;
         margin-bottom: var(--spacing-4);
-        background: var(--color-white-0-t2);
         animation: pricePulse 2s infinite;
 
         & .tag {
@@ -607,7 +606,7 @@ body {
     z-index: 10000;
     box-shadow:
         0 8px 30px rgba(var(--black-rgb), 0.25),
-        0 0 30px rgba(var(--accent-rgb), .22);
+        0 0 30px var(--accent-t2);
     animation: stickyPulse 1.5s infinite;
     white-space: nowrap;
     text-decoration: none;
