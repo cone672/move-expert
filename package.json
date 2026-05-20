@@ -14,5 +14,8 @@
   "type": "module",
   "dependencies": {
     "@11ty/eleventy": "^3.1.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
   }
 }
