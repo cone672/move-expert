@@ -46,6 +46,9 @@ jobs:
 
       - run: npm ci
       - run: npm run build-ghpages
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
 
       - name: Upload static files as artifact
         id: deployment
