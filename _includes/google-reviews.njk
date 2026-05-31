@@ -1,0 +1,36 @@
+{% if googleReviews and googleReviews.reviews.length %}
+<section class="google-reviews">
+    <div class="container-m">
+        <div class="google-reviews-header">
+            <h2>Google Review govori sve</h2>
+            <div class="google-reviews-summary">
+                <span class="google-reviews-stars">★★★★★</span>
+                <span class="google-reviews-rating">{{ googleReviews.rating }}</span>
+                <span class="google-reviews-sep">—</span>
+                {% if googleReviews.placeUrl %}
+                <a class="google-reviews-count" href="{{ googleReviews.placeUrl }}" target="_blank" rel="noopener">{{ googleReviews.total }} Google recenzija</a>
+                {% else %}
+                <span class="google-reviews-count">{{ googleReviews.total }} Google recenzija</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="google-reviews-viewport">
+            <div class="google-reviews-track">
+                {% for review in googleReviews.reviews %}
+                <article class="google-review-card" lang="{{ review.lang }}">
+                    <p class="google-review-text">{{ review.text }}</p>
+                    <footer class="google-review-footer">
+                        {% if review.photo %}<img class="google-review-avatar" src="{{ review.photo }}" alt="" loading="lazy" referrerpolicy="no-referrer">{% else %}<div class="google-review-avatar google-review-avatar-fallback">{{ review.author[0] }}</div>{% endif %}
+                        <div class="google-review-who">
+                            <div class="google-review-author">{% if review.url %}<a href="{{ review.url }}" target="_blank" rel="noopener">{{ review.author }}</a>{% else %}{{ review.author }}{% endif %}</div>
+                            <div class="google-review-meta"><span class="google-review-stars-small">{{ review.stars }}</span> · {{ review.relativeTime }}</div>
+                        </div>
+                        {% if review.url %}<a class="google-review-external" href="{{ review.url }}" target="_blank" rel="noopener" aria-label="Pogledaj recenziju na Google"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v7H3V3h7"/></svg></a>{% endif %}
+                    </footer>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

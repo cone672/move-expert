@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "eleventy --serve",
-    "build-ghpages": "npx @11ty/eleventy --pathprefix=move-expert"
+    "dev": "node --env-file=.env node_modules/.bin/eleventy --serve",
+    "build": "node --env-file=.env node_modules/.bin/eleventy",
+    "build-ghpages": "node --env-file=.env node_modules/.bin/eleventy --pathprefix=move-expert"
   },
   "keywords": [],
   "author": "",
   "license": "Proprietary",
   "type": "module",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.5"
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-fetch": "^5.1.2"
   },
   "devDependencies": {
     "esbuild": "^0.28.0"
