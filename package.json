@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --env-file=.env node_modules/.bin/eleventy --serve",
-    "build": "node --env-file=.env node_modules/.bin/eleventy",
-    "build-ghpages": "node --env-file=.env node_modules/.bin/eleventy --pathprefix=move-expert"
+    "dev": "node --env-file-if-exists=.env node_modules/.bin/eleventy --serve",
+    "build": "node --env-file-if-exists=.env node_modules/.bin/eleventy",
+    "build-ghpages": "node --env-file-if-exists=.env node_modules/.bin/eleventy --pathprefix=move-expert"
   },
   "keywords": [],
   "author": "",
