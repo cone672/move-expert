@@ -3,6 +3,7 @@ import * as esbuild from "esbuild";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy({ "static": "/" });
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
   eleventyConfig.on("eleventy.before", async () => {
