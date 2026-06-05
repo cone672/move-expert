@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Solid Black Background -->
+  <rect width="512" height="512" fill="#000000" />
+
+  <!-- Perfectly Centered and Slanted Monogram Group -->
+  <!-- Translate X adjusted to 288.5 to achieve exact margin symmetry on the left and right edges after skewing -->
+  <g transform="translate(288.5, 256) skewX(-12) scale(1.3) translate(-256, -256)">
+    <!-- 'M' in Pure White -->
+    <path d="M 96,176 
+             L 141,176 
+             L 171,236 
+             L 201,176 
+             L 246,176 
+             L 246,336 
+             L 206,336 
+             L 206,221 
+             L 171,296 
+             L 136,221 
+             L 136,336 
+             L 96,336 
+             Z" 
+          fill="#FFFFFF" />
+
+    <!-- 'E' in Solid Brand Orange (#FF5A1F) -->
+    <path d="M 261,176 
+             L 366,176 
+             L 366,211 
+             L 301,211 
+             L 301,238.5 
+             L 351,238.5 
+             L 351,273.5 
+             L 301,273.5 
+             L 301,301 
+             L 366,301 
+             L 366,336 
+             L 261,336 
+             Z" 
+          fill="#FF5A1F" />
+  </g>
+</svg>

@@ -38,17 +38,26 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
 
-      - name: Cache Eleventy .cache
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
+      - name: Restore Eleventy .cache
+        uses: actions/cache/restore@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
         with:
           path: ./.cache
-          key: ${{ runner.os }}-eleventy-fetch-cache
+          key: ${{ runner.os }}-eleventy-fetch-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-eleventy-fetch-
 
       - run: npm ci
       - run: npm run build-ghpages
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+
+      - name: Save Eleventy .cache
+        uses: actions/cache/save@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
+        if: always()
+        with:
+          path: ./.cache
+          key: ${{ runner.os }}-eleventy-fetch-${{ github.run_id }}
 
       - name: Upload static files as artifact
         id: deployment

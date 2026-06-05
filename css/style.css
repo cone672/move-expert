@@ -1773,7 +1773,7 @@ input, select, textarea, .calc-input {
 }
 
 /* ===== FOOTER ===== */
-footer {
+#footer {
     background: var(--color-black-3);
     border-top: 1px solid var(--color-black-4);
     padding: var(--spacing-5) var(--spacing-3);
@@ -2178,8 +2178,8 @@ footer {
     .google-review-card {
         flex: 0 0 100%;
         min-width: 0;
-        background: linear-gradient(180deg, var(--color-black-3), var(--color-black-2));
-        border: 1px solid var(--color-black-5);
+        background: var(--color-white-0);
+        border: 1px solid #e5e5e5;
         border-radius: var(--border-radius-3);
         padding: var(--spacing-4) var(--spacing-3);
         position: relative;
@@ -2198,7 +2198,7 @@ footer {
         z-index: 1;
         font-size: var(--text-s3);
         line-height: 1.65;
-        color: var(--text-c2);
+        color: var(--color-black-0);
         flex: 1;
         display: -webkit-box;
         -webkit-line-clamp: 6;
@@ -2211,7 +2211,7 @@ footer {
         align-items: center;
         gap: var(--spacing-2);
         padding-top: var(--spacing-3);
-        border-top: 1px solid var(--color-black-4);
+        border-top: 1px solid #e5e5e5;
     }
 
     .google-review-avatar {
@@ -2220,7 +2220,7 @@ footer {
         border-radius: 50%;
         object-fit: cover;
         flex-shrink: 0;
-        background: var(--color-black-4);
+        background: #e5e5e5;
     }
 
     .google-review-avatar-fallback {
@@ -2241,7 +2241,7 @@ footer {
     .google-review-author {
         font-weight: 700;
         font-size: var(--text-s2);
-        color: var(--color-white-0);
+        color: var(--color-black-0);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -2249,7 +2249,7 @@ footer {
 
     .google-review-meta {
         font-size: var(--text-s1);
-        color: var(--text-c6);
+        color: var(--text-c8);
         margin-top: 2px;
     }
 
@@ -2264,7 +2264,7 @@ footer {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--text-c6);
+        color: var(--text-c8);
         transition: color .2s ease;
 
         &:hover {
