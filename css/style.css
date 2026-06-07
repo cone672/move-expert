@@ -292,7 +292,7 @@ input, select, textarea, .calc-input {
         display: flex;
         align-items: center;
         gap: var(--spacing-3);
-        padding: var(--spacing-3);
+        padding: var(--spacing-2);
         border-radius: var(--border-radius-2);
         color: var(--color-white-0);
         text-decoration: none;
