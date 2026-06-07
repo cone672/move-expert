@@ -402,7 +402,7 @@ input, select, textarea, .calc-input {
             justify-content: center;
             gap: var(--spacing-3);
             min-height: 58px;
-            padding: var(--spacing-3) var(--spacing-3);
+            padding: var(--spacing-2) var(--spacing-3);
             border-radius: var(--border-radius-3);
             text-decoration: none;
             color: var(--color-white-0);
@@ -471,6 +471,7 @@ input, select, textarea, .calc-input {
         gap: var(--spacing-2);
         max-width: 430px;
         margin: 0 auto;
+        padding: 0 var(--spacing-3);
 
         .hero-mini-card {
             flex: 1 1 0;
@@ -541,12 +542,6 @@ input, select, textarea, .calc-input {
                 color: var(--accent);
             }
 
-            & span:last-child {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-
             @media (min-width: 641px) {
                 font-size: var(--text-s2);
             }
@@ -572,7 +567,6 @@ input, select, textarea, .calc-input {
     }
 
     .btn {
-        flex: 1 1 100%;
         min-width: 0;
         padding: var(--spacing-3);
         border-radius: var(--border-radius-3);
@@ -582,7 +576,6 @@ input, select, textarea, .calc-input {
         align-items: center;
         justify-content: center;
         gap: var(--spacing-2);
-        height: 78px;
         width: 100%;
         text-align: center;
         transition: transform .15s ease, box-shadow .15s ease;
@@ -590,6 +583,8 @@ input, select, textarea, .calc-input {
         color: var(--color-white-0);
         text-decoration: none;
         cursor: pointer;
+        height: 84px;
+        flex: 1 1 calc(50% - var(--spacing-3));
 
         &:hover {
             transform: translateY(-2px);
@@ -606,11 +601,6 @@ input, select, textarea, .calc-input {
             width: 20px;
             height: 20px;
             display: inline-block;
-        }
-
-        @media (min-width: 441px) {
-            height: 84px;
-            flex: 1 1 calc(50% - var(--spacing-3));
         }
     }
 
@@ -631,16 +621,13 @@ input, select, textarea, .calc-input {
         gap: var(--spacing-4);
         margin-bottom: var(--spacing-4);
 
+
         & .feature {
             display: flex;
-            flex: 1 1 100%;
             min-width: 0;
             align-items: flex-start;
             gap: var(--spacing-2);
-
-            @media (min-width: 441px) {
-                flex: 1 1 calc(50% - var(--spacing-4));
-            }
+            flex: 1 1 calc(50% - var(--spacing-4));
 
             & .icon {
                 width: 26px;
