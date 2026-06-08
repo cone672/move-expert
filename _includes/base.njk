@@ -85,6 +85,7 @@
     </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Pređi na sadržaj</a>
 <div class="float-bar">
     <div class="float-group">
         <button class="float-btn float-top" id="floatTop" aria-label="Nazad na vrh" type="button">
@@ -112,7 +113,7 @@
     </div>
 </div>
 <div class="nav-overlay" id="navOverlay"></div>
-<nav class="nav-drawer" id="navDrawer" aria-hidden="true">
+<nav class="nav-drawer" id="navDrawer" aria-hidden="true" inert>
     <button class="nav-close" id="navClose" aria-label="Zatvori meni" type="button">×</button>
     <a href="/"><span class="nav-icon">📦</span>Početna</a>
     <a href="/cenovnik"><span class="nav-icon">💰</span>Cenovnik i kalkulator</a>
@@ -128,6 +129,7 @@
 </nav>
 
 {# ===== HERO HEADER (shared across all pages) ===== #}
+<main id="main">
 <div class="hero-header">
     <div class="container-m">
         <div class="top-bar">
@@ -148,6 +150,7 @@
 </div>
 
 {{ content | safe }}
+</main>
 
 {#<div class="map-card full-bleed">#}
 {#    <h2>Gde radimo</h2>#}

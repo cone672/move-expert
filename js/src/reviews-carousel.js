@@ -14,6 +14,7 @@ function init() {
   originals.slice(0, VISIBLE).forEach((card) => {
     const clone = card.cloneNode(true);
     clone.setAttribute("aria-hidden", "true");
+    clone.setAttribute("inert", "");
     track.appendChild(clone);
   });
 

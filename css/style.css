@@ -167,6 +167,28 @@ h1, h2, h3, h4, h5, h6 {
     font: var(--font-heading);
 }
 
+/* ===== SKIP TO CONTENT LINK ===== */
+.skip-link {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 12px 20px;
+    background: var(--accent);
+    color: var(--color-white-0);
+    font: var(--font-button);
+    text-decoration: none;
+    border-bottom-right-radius: 8px;
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+    outline: 2px solid var(--color-white-0);
+    outline-offset: 2px;
+}
+
 .btn, button {
     font: var(--font-button);
 }

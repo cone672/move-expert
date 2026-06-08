@@ -10,6 +10,7 @@ if (btn && drawer && overlay && closeBtn) {
         overlay.classList.toggle('is-open', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+        drawer.toggleAttribute('inert', !open);
         document.body.style.overflow = open ? 'hidden' : '';
     };
 
