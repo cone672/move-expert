@@ -634,7 +634,7 @@ input, select, textarea, .calc-input {
         font-size: var(--text-s4);
         letter-spacing: 0.2px;
         box-shadow: 0 0 18px var(--accent-t3);
-        color: var(--color-white-0);
+        color: var(--color-black-0);
     }
 
     .features {
@@ -682,7 +682,7 @@ input, select, textarea, .calc-input {
             border-radius: var(--border-radius-2);
             font-size: var(--text-s1);
             margin-bottom: var(--spacing-2);
-            color: var(--color-white-0);
+            color: var(--color-black-0);
         }
 
         & .price-title {
@@ -1807,7 +1807,7 @@ input, select, textarea, .calc-input {
 
     .footer-copy {
         font-size: var(--text-s1);
-        color: var(--text-c8);
+        color: var(--text-c6);
     }
 }
 
