@@ -16,7 +16,7 @@ function formatRSD(n) {
 // Per-calculator state
 const state = {
     selidba:   { items: [], pack: [], boxes: [], assembly: [], finalPrice: 0 },
-    prevoz:    { items: [], finalPrice: 0 },
+    prevoz:    { items: [], assembly: [], finalPrice: 0 },
     odnosenje: { items: [], finalPrice: 0 }
 };
 
@@ -128,99 +128,142 @@ function renderList(listId, arr, prefix, onRemove) {
     </li>`).join('');
 }
 
-// ---- Selidba: Montaža / demontaža data ----
-const selidbaAssembly = [
+
+// ---- Selidba: Lične stvari i nameštaj data ----
+const selidbaLicneStvariNamestaj = [
     {
-        section: 'Garniture',
+        section: 'Dnevna soba',
         items: [
-            { name: 'Kauč / sofa', disassembly: 600, assembly: 1000, both: 1600 },
-            { name: 'Dvosed', disassembly: 800, assembly: 1200, both: 2000 },
-            { name: 'Trosed', disassembly: 1000, assembly: 1500, both: 2500 },
-            { name: 'Ugaona garnitura (manja)', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Ugaona garnitura (velika)', disassembly: 1500, assembly: 2500, both: 4000 },
-            { name: 'Fotelja sa mehanizmom', disassembly: 500, assembly: 500, both: 900 },
+            { name: 'Kauč / sofa', value: 700, heavy: false },
+            { name: 'Dvosed', value: 700, heavy: false },
+            { name: 'Trosed', value: 900, heavy: false },
+            { name: 'Ugaona garnitura', value: 2000, heavy: false },
+            { name: 'Fotelja', value: 400, heavy: false },
+            { name: 'Tabure', value: 200, heavy: false },
         ]
     },
     {
         section: 'Kreveti',
         items: [
-            { name: 'Bračni krevet', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Bračni krevet sa podiznim mehanizmom', disassembly: 2000, assembly: 3000, both: 5000 },
-            { name: 'Bračni krevet sa tapaciranim uzglavljem', disassembly: 2000, assembly: 3000, both: 5000 },
-            { name: 'Krevet samac', disassembly: 800, assembly: 1000, both: 1800 },
-            { name: 'Dečiji krevet', disassembly: 600, assembly: 900, both: 1500 },
-            { name: 'Krevet na sprat', disassembly: 2500, assembly: 3000, both: 5500 },
-            { name: 'Dečiji krevetac', disassembly: 600, assembly: 900, both: 1500 },
+            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: false },
+            { name: 'Krevet samac', value: 1200, heavy: false },
+            { name: 'Dečiji krevet', value: 1000, heavy: false },
+            { name: 'Krevet na sprat', value: 3000, heavy: false },
+            { name: 'Dušek bračni', value: 700, heavy: false },
+            { name: 'Dušek singl', value: 500, heavy: false },
         ]
     },
     {
         section: 'Ormari',
         items: [
-            { name: 'Mali ormar', disassembly: 800, assembly: 1200, both: 2000 },
-            { name: 'Srednji ormar', disassembly: 1200, assembly: 1800, both: 2800 },
-            { name: 'Veliki ormar', disassembly: 2200, assembly: 2800, both: 5000 },
-            { name: 'Klizni plakar', disassembly: 3000, assembly: 3500, both: 6500 },
-            { name: 'Garderober', disassembly: 2000, assembly: 3000, both: 5000 },
-            { name: 'Arhivski ormar', disassembly: 1000, assembly: 1500, both: 2500 },
-            { name: 'Metalni ormar za dokumentaciju', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Cipelarnik', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Mali ormar (u komadu)', value: 700, heavy: false },
+            { name: 'Mali ormar (u delovima)', value: 1000, heavy: false },
+            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: false },
+            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: false },
+            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: false },
+            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: false },
         ]
     },
     {
         section: 'Regali i police',
         items: [
-            { name: 'Mala polica', disassembly: 500, assembly: 500, both: 1000 },
-            { name: 'Mali regal', disassembly: 800, assembly: 1200, both: 2000 },
-            { name: 'Srednji regal', disassembly: 1500, assembly: 2500, both: 4000 },
-            { name: 'Veliki regal', disassembly: 2500, assembly: 3500, both: 6000 },
-            { name: 'Biblioteka za knjige', disassembly: 2000, assembly: 3000, both: 5000 },
-            { name: 'Vitrina', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Vinska vitrina', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Mala polica', value: 1000, heavy: false },
+            { name: 'Mali regal', value: 2000, heavy: false },
+            { name: 'Srednji regal', value: 3000, heavy: false },
+            { name: 'Veliki regal', value: 4000, heavy: false },
+            { name: 'Vitrina', value: 1500, heavy: false },
         ]
     },
     {
-        section: 'Komode i fiokari',
+        section: 'Komode',
         items: [
-            { name: 'Komoda velika', disassembly: 800, assembly: 1000, both: 1800 },
-            { name: 'Komoda mala', disassembly: 500, assembly: 700, both: 1200 },
-            { name: 'Fiokar', disassembly: 600, assembly: 900, both: 1500 },
-            { name: 'Komoda za presvlačenje', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Komoda velika', value: 650, heavy: false },
+            { name: 'Komoda mala', value: 450, heavy: false },
+            { name: 'Noćni ormarić', value: 300, heavy: false },
         ]
     },
     {
-        section: 'Stolovi',
+        section: 'Kuhinja i bela tehnika',
         items: [
-            { name: 'Trpezarijski sto', disassembly: 600, assembly: 1000, both: 1600 },
-            { name: 'Konferencijski sto', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Ugaoni radni sto', disassembly: 1000, assembly: 1500, both: 2500 },
-            { name: 'Radni sto', disassembly: 600, assembly: 1000, both: 1600 },
-            { name: 'Kompjuterski sto', disassembly: 800, assembly: 1200, both: 2000 },
-            { name: 'Radni sto radionica', disassembly: 1000, assembly: 2000, both: 3000 },
-            { name: 'Toaletni sto', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Frižider', value: 1000, heavy: false },
+            { name: 'Veliki frižider', value: 1500, heavy: false },
+            { name: 'Side by side frižider', value: 2000, heavy: false },
+            { name: 'Zamrzivač', value: 1000, heavy: false },
+            { name: 'Škrinja zamrzivač', value: 1200, heavy: false },
+            { name: 'Veš mašina', value: 700, heavy: false },
+            { name: 'Sušilica veša', value: 700, heavy: false },
+            { name: 'Mašina za sudove', value: 600, heavy: false },
+            { name: 'Šporet', value: 600, heavy: false },
+            { name: 'Ugradna rerna', value: 400, heavy: false },
+            { name: 'Mikrotalasna', value: 200, heavy: false },
+            { name: 'Aspirator', value: 200, heavy: false },
         ]
     },
     {
-        section: 'Kuhinja',
+        section: 'Kuhinjski elementi',
         items: [
-            { name: 'Gornji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
-            { name: 'Donji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
-            { name: 'Kuhinjski pult', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Gornji kuhinjski element', value: 500, heavy: false },
+            { name: 'Donji kuhinjski element', value: 800, heavy: false },
+            { name: 'Kuhinjski pult', value: 2000, heavy: false },
         ]
     },
     {
         section: 'Kupatilo',
         items: [
-            { name: 'Kupatilski ormarić', disassembly: 500, assembly: 700, both: 1200 },
+            { name: 'Kupatilski ormarić', value: 500, heavy: false },
+            { name: 'Bojler', value: 700, heavy: false },
+        ]
+    },
+    {
+        section: 'Elektronika',
+        items: [
+            { name: 'TV do 55"', value: 400, heavy: false },
+            { name: 'TV preko 55"', value: 600, heavy: false },
+            { name: 'Laptop', value: 200, heavy: false },
+            { name: 'Desktop računar', value: 220, heavy: false },
+            { name: 'Monitor', value: 200, heavy: false },
+            { name: 'Printer', value: 300, heavy: false },
+            { name: 'Muzička linija', value: 200, heavy: false },
+        ]
+    },
+    {
+        section: 'Džakovi i specijalni predmeti',
+        items: [
+            { name: 'Džak šuta 25kg', value: 400, heavy: false },
+            { name: 'Džak šuta 50kg', value: 700, heavy: false },
+            { name: 'Putni kofer', value: 300, heavy: false },
+        ]
+    },
+    {
+        section: 'Lakši teški predmeti (do oko 100 kg)',
+        items: [
+            { name: 'TA peć do 100 kg', value: 2000, heavy: false },
+            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: false },
+            { name: 'Sef do 100 kg', value: 2000, heavy: false },
+            { name: 'Traka za trčanje', value: 2000, heavy: false },
+            { name: 'Sobni bicikl', value: 1000, heavy: false },
+            { name: 'Eliptični trenažer', value: 1500, heavy: false },
+            { name: 'Veslačka sprava', value: 1200, heavy: false },
+            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: false },
+            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: false },
+            { name: 'Server ormar do 100 kg', value: 2000, heavy: false },
+            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: false },
+            { name: 'Kotao do 100 kg', value: 2000, heavy: false },
         ]
     },
     {
         section: 'Ostalo',
         items: [
-            { name: 'Stalak za TV', disassembly: 500, assembly: 500, both: 1000 },
-            { name: 'Ogradica za bebu', disassembly: 500, assembly: 500, both: 1000 },
-            { name: 'Ljuljaška za terasu', disassembly: 800, assembly: 1200, both: 1800 },
-            { name: 'Baštenska garnitura komplet', disassembly: 800, assembly: 1200, both: 2000 },
-            { name: 'Krevet za kućne ljubimce (veći modeli)', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Bicikl', value: 500, heavy: false },
+            { name: 'Električni trotinet', value: 400, heavy: false },
+            { name: 'Baštenski nameštaj (komad)', value: 250, heavy: false },
+            { name: 'Saksija velika', value: 300, heavy: false },
+            { name: 'Velika saksija sa zemljom', value: 500, heavy: false },
+            { name: 'Ogledalo veliko', value: 400, heavy: false },
+            { name: 'Akvarijum', value: 700, heavy: false },
+            { name: 'Kolica za bebe', value: 300, heavy: false },
+            { name: 'Invalidska kolica', value: 500, heavy: false },
+            { name: 'Veliki roštilj', value: 800, heavy: false },
         ]
     },
 ];
@@ -368,8 +411,248 @@ const selidbaStrecPakovanje = [
     },
 ];
 
-// ---- Selidba: Lične stvari i nameštaj data ----
-const selidbaLicneStvariNamestaj = [
+// ---- Selidba: Montaža / demontaža data ----
+const selidbaAssembly = [
+    {
+        section: 'Garniture',
+        items: [
+            { name: 'Kauč / sofa', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Dvosed', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Trosed', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Ugaona garnitura (manja)', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Ugaona garnitura (velika)', disassembly: 1500, assembly: 2500, both: 4000 },
+            { name: 'Fotelja sa mehanizmom', disassembly: 500, assembly: 500, both: 900 },
+        ]
+    },
+    {
+        section: 'Kreveti',
+        items: [
+            { name: 'Bračni krevet', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Bračni krevet sa podiznim mehanizmom', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Bračni krevet sa tapaciranim uzglavljem', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Krevet samac', disassembly: 800, assembly: 1000, both: 1800 },
+            { name: 'Dečiji krevet', disassembly: 600, assembly: 900, both: 1500 },
+            { name: 'Krevet na sprat', disassembly: 2500, assembly: 3000, both: 5500 },
+            { name: 'Dečiji krevetac', disassembly: 600, assembly: 900, both: 1500 },
+        ]
+    },
+    {
+        section: 'Ormari',
+        items: [
+            { name: 'Mali ormar', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Srednji ormar', disassembly: 1200, assembly: 1800, both: 2800 },
+            { name: 'Veliki ormar', disassembly: 2200, assembly: 2800, both: 5000 },
+            { name: 'Klizni plakar', disassembly: 3000, assembly: 3500, both: 6500 },
+            { name: 'Garderober', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Arhivski ormar', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Metalni ormar za dokumentaciju', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Cipelarnik', disassembly: 500, assembly: 500, both: 1000 },
+        ]
+    },
+    {
+        section: 'Regali i police',
+        items: [
+            { name: 'Mala polica', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Mali regal', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Srednji regal', disassembly: 1500, assembly: 2500, both: 4000 },
+            { name: 'Veliki regal', disassembly: 2500, assembly: 3500, both: 6000 },
+            { name: 'Biblioteka za knjige', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Vitrina', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Vinska vitrina', disassembly: 1000, assembly: 1500, both: 2500 },
+        ]
+    },
+    {
+        section: 'Komode i fiokari',
+        items: [
+            { name: 'Komoda velika', disassembly: 800, assembly: 1000, both: 1800 },
+            { name: 'Komoda mala', disassembly: 500, assembly: 700, both: 1200 },
+            { name: 'Fiokar', disassembly: 600, assembly: 900, both: 1500 },
+            { name: 'Komoda za presvlačenje', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Stolovi',
+        items: [
+            { name: 'Trpezarijski sto', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Konferencijski sto', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Ugaoni radni sto', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Radni sto', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Kompjuterski sto', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Radni sto radionica', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Toaletni sto', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Kuhinja',
+        items: [
+            { name: 'Gornji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
+            { name: 'Donji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
+            { name: 'Kuhinjski pult', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Kupatilo',
+        items: [
+            { name: 'Kupatilski ormarić', disassembly: 500, assembly: 700, both: 1200 },
+        ]
+    },
+    {
+        section: 'Ostalo',
+        items: [
+            { name: 'Stalak za TV', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Ogradica za bebu', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Ljuljaška za terasu', disassembly: 800, assembly: 1200, both: 1800 },
+            { name: 'Baštenska garnitura komplet', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Krevet za kućne ljubimce (veći modeli)', disassembly: 500, assembly: 500, both: 1000 },
+        ]
+    },
+];
+
+// ---- Odnosenje: Stavke data ----
+const odnosenjeStavke = [
+    {
+        section: 'Dnevna soba',
+        items: [
+            { name: 'Kauč / sofa', value: 700, heavy: false },
+            { name: 'Dvosed', value: 700, heavy: false },
+            { name: 'Trosed', value: 900, heavy: false },
+            { name: 'Ugaona garnitura', value: 2000, heavy: false },
+            { name: 'Fotelja', value: 400, heavy: false },
+            { name: 'Tabure', value: 200, heavy: false },
+        ]
+    },
+    {
+        section: 'Kreveti',
+        items: [
+            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: false },
+            { name: 'Krevet samac', value: 1200, heavy: false },
+            { name: 'Dečiji krevet', value: 1000, heavy: false },
+            { name: 'Krevet na sprat', value: 3000, heavy: false },
+            { name: 'Dušek bračni', value: 700, heavy: false },
+            { name: 'Dušek singl', value: 500, heavy: false },
+        ]
+    },
+    {
+        section: 'Ormari',
+        items: [
+            { name: 'Mali ormar (u komadu)', value: 700, heavy: false },
+            { name: 'Mali ormar (u delovima)', value: 1000, heavy: false },
+            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: false },
+            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: false },
+            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: false },
+            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: false },
+        ]
+    },
+    {
+        section: 'Regali i police',
+        items: [
+            { name: 'Mala polica', value: 1000, heavy: false },
+            { name: 'Mali regal', value: 2000, heavy: false },
+            { name: 'Srednji regal', value: 3000, heavy: false },
+            { name: 'Veliki regal', value: 4000, heavy: false },
+            { name: 'Vitrina', value: 1500, heavy: false },
+        ]
+    },
+    {
+        section: 'Komode',
+        items: [
+            { name: 'Komoda velika', value: 650, heavy: false },
+            { name: 'Komoda mala', value: 450, heavy: false },
+            { name: 'Noćni ormarić', value: 300, heavy: false },
+        ]
+    },
+    {
+        section: 'Kuhinja i bela tehnika',
+        items: [
+            { name: 'Frižider', value: 1000, heavy: false },
+            { name: 'Veliki frižider', value: 1500, heavy: false },
+            { name: 'Side by side frižider', value: 2000, heavy: false },
+            { name: 'Zamrzivač', value: 1000, heavy: false },
+            { name: 'Škrinja zamrzivač', value: 1200, heavy: false },
+            { name: 'Veš mašina', value: 700, heavy: false },
+            { name: 'Sušilica veša', value: 700, heavy: false },
+            { name: 'Mašina za sudove', value: 600, heavy: false },
+            { name: 'Šporet', value: 600, heavy: false },
+            { name: 'Ugradna rerna', value: 400, heavy: false },
+            { name: 'Mikrotalasna', value: 200, heavy: false },
+            { name: 'Aspirator', value: 200, heavy: false },
+        ]
+    },
+    {
+        section: 'Kuhinjski elementi',
+        items: [
+            { name: 'Gornji kuhinjski element', value: 500, heavy: false },
+            { name: 'Donji kuhinjski element', value: 800, heavy: false },
+            { name: 'Kuhinjski pult', value: 2000, heavy: false },
+        ]
+    },
+    {
+        section: 'Kupatilo',
+        items: [
+            { name: 'Kupatilski ormarić', value: 500, heavy: false },
+            { name: 'Bojler', value: 700, heavy: false },
+            { name: 'Radijator', value: 300, heavy: false },
+        ]
+    },
+    {
+        section: 'Elektronika',
+        items: [
+            { name: 'TV do 55"', value: 400, heavy: false },
+            { name: 'TV preko 55"', value: 600, heavy: false },
+            { name: 'Laptop', value: 200, heavy: false },
+            { name: 'Desktop računar', value: 220, heavy: false },
+            { name: 'Monitor', value: 200, heavy: false },
+            { name: 'Printer', value: 300, heavy: false },
+            { name: 'Muzička linija', value: 200, heavy: false },
+        ]
+    },
+    {
+        section: 'Džakovi i specijalni predmeti',
+        items: [
+            { name: 'Džak šuta 25kg', value: 400, heavy: false },
+            { name: 'Džak šuta 50kg', value: 700, heavy: false },
+            { name: 'Putni kofer', value: 300, heavy: false },
+        ]
+    },
+    {
+        section: 'Lakši teški predmeti (do oko 100 kg)',
+        items: [
+            { name: 'TA peć do 100 kg', value: 2000, heavy: false },
+            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: false },
+            { name: 'Sef do 100 kg', value: 2000, heavy: false },
+            { name: 'Traka za trčanje', value: 2000, heavy: false },
+            { name: 'Sobni bicikl', value: 1000, heavy: false },
+            { name: 'Eliptični trenažer', value: 1500, heavy: false },
+            { name: 'Veslačka sprava', value: 1200, heavy: false },
+            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: false },
+            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: false },
+            { name: 'Server ormar do 100 kg', value: 2000, heavy: false },
+            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: false },
+            { name: 'Kotao do 100 kg', value: 2000, heavy: false },
+        ]
+    },
+    {
+        section: 'Ostalo',
+        items: [
+            { name: 'Bicikl', value: 500, heavy: false },
+            { name: 'Električni trotinet', value: 400, heavy: false },
+            { name: 'Baštenski nameštaj (komad)', value: 250, heavy: false },
+            { name: 'Saksija velika', value: 300, heavy: false },
+            { name: 'Velika saksija sa zemljom', value: 500, heavy: false },
+            { name: 'Ogledalo veliko', value: 400, heavy: false },
+            { name: 'Akvarijum', value: 700, heavy: false },
+            { name: 'Kolica za bebe', value: 300, heavy: false },
+            { name: 'Invalidska kolica', value: 500, heavy: false },
+            { name: 'Veliki roštilj', value: 800, heavy: false },
+            { name: 'Klima uređaj', value: 400, heavy: false },
+            { name: 'Vrata', value: 300, heavy: false },
+            { name: 'Prozori', value: 300, heavy: false },
+        ]
+    },
+];
+
+// ---- Prevoz: Stavke za prevoz data ----
+const prevozStavke = [
     {
         section: 'Dnevna soba',
         items: [
@@ -507,6 +790,104 @@ const selidbaLicneStvariNamestaj = [
     },
 ];
 
+// ---- Prevoz: Montaža / demontaža data ----
+const prevozAssembly = [
+    {
+        section: 'Garniture',
+        items: [
+            { name: 'Kauč / sofa', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Dvosed', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Trosed', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Ugaona garnitura (manja)', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Ugaona garnitura (velika)', disassembly: 1500, assembly: 2500, both: 4000 },
+            { name: 'Fotelja sa mehanizmom', disassembly: 500, assembly: 500, both: 900 },
+        ]
+    },
+    {
+        section: 'Kreveti',
+        items: [
+            { name: 'Bračni krevet', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Bračni krevet sa podiznim mehanizmom', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Bračni krevet sa tapaciranim uzglavljem', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Krevet samac', disassembly: 800, assembly: 1000, both: 1800 },
+            { name: 'Dečiji krevet', disassembly: 600, assembly: 900, both: 1500 },
+            { name: 'Krevet na sprat', disassembly: 2500, assembly: 3000, both: 5500 },
+            { name: 'Dečiji krevetac', disassembly: 600, assembly: 900, both: 1500 },
+        ]
+    },
+    {
+        section: 'Ormari',
+        items: [
+            { name: 'Mali ormar', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Srednji ormar', disassembly: 1200, assembly: 1800, both: 2800 },
+            { name: 'Veliki ormar', disassembly: 2200, assembly: 2800, both: 5000 },
+            { name: 'Klizni plakar', disassembly: 3000, assembly: 3500, both: 6500 },
+            { name: 'Garderober', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Arhivski ormar', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Metalni ormar za dokumentaciju', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Cipelarnik', disassembly: 500, assembly: 500, both: 1000 },
+        ]
+    },
+    {
+        section: 'Regali i police',
+        items: [
+            { name: 'Mala polica', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Mali regal', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Srednji regal', disassembly: 1500, assembly: 2500, both: 4000 },
+            { name: 'Veliki regal', disassembly: 2500, assembly: 3500, both: 6000 },
+            { name: 'Biblioteka za knjige', disassembly: 2000, assembly: 3000, both: 5000 },
+            { name: 'Vitrina', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Vinska vitrina', disassembly: 1000, assembly: 1500, both: 2500 },
+        ]
+    },
+    {
+        section: 'Komode i fiokari',
+        items: [
+            { name: 'Komoda velika', disassembly: 800, assembly: 1000, both: 1800 },
+            { name: 'Komoda mala', disassembly: 500, assembly: 700, both: 1200 },
+            { name: 'Fiokar', disassembly: 600, assembly: 900, both: 1500 },
+            { name: 'Komoda za presvlačenje', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Stolovi',
+        items: [
+            { name: 'Trpezarijski sto', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Konferencijski sto', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Ugaoni radni sto', disassembly: 1000, assembly: 1500, both: 2500 },
+            { name: 'Radni sto', disassembly: 600, assembly: 1000, both: 1600 },
+            { name: 'Kompjuterski sto', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Radni sto radionica', disassembly: 1000, assembly: 2000, both: 3000 },
+            { name: 'Toaletni sto', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Kuhinja',
+        items: [
+            { name: 'Gornji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
+            { name: 'Donji kuhinjski element', disassembly: 700, assembly: 800, both: 1500 },
+            { name: 'Kuhinjski pult', disassembly: 800, assembly: 1200, both: 2000 },
+        ]
+    },
+    {
+        section: 'Kupatilo',
+        items: [
+            { name: 'Kupatilski ormarić', disassembly: 500, assembly: 700, both: 1200 },
+        ]
+    },
+    {
+        section: 'Ostalo',
+        items: [
+            { name: 'Stalak za TV', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Ogradica za bebu', disassembly: 500, assembly: 500, both: 1000 },
+            { name: 'Ljuljaška za terasu', disassembly: 800, assembly: 1200, both: 1800 },
+            { name: 'Baštenska garnitura komplet', disassembly: 800, assembly: 1200, both: 2000 },
+            { name: 'Krevet za kućne ljubimce (veći modeli)', disassembly: 500, assembly: 500, both: 1000 },
+        ]
+    },
+];
+
+
 function populateSectionSelect() {
     const sectionSel = document.getElementById('s_section');
     sectionSel.innerHTML = selidbaLicneStvariNamestaj
@@ -523,6 +904,63 @@ function populateItemSelect() {
     itemSel.innerHTML = section.items
         .map(it => `<option value="${it.value}" data-heavy="${it.heavy ? '1' : '0'}">${it.name} (${it.value.toLocaleString('sr-RS')} RSD)</option>`)
         .join('');
+}
+
+function populateOdnosenjeSectionSelect() {
+    const sectionSel = document.getElementById('o_section');
+    sectionSel.innerHTML = odnosenjeStavke
+        .map(s => `<option value="${s.section}">${s.section}</option>`)
+        .join('');
+    populateOdnosenjeItemSelect();
+}
+
+function populateOdnosenjeItemSelect() {
+    const sectionSel = document.getElementById('o_section');
+    const itemSel = document.getElementById('o_item');
+    const section = odnosenjeStavke.find(s => s.section === sectionSel.value);
+    if (!section) return;
+    itemSel.innerHTML = section.items
+        .map(it => `<option value="${it.value}" data-heavy="${it.heavy ? '1' : '0'}">${it.name} (${it.value.toLocaleString('sr-RS')} RSD)</option>`)
+        .join('');
+}
+
+function populatePrevozSectionSelect() {
+    const sectionSel = document.getElementById('p_section');
+    sectionSel.innerHTML = prevozStavke
+        .map(s => `<option value="${s.section}">${s.section}</option>`)
+        .join('');
+    populatePrevozItemSelect();
+}
+
+function populatePrevozItemSelect() {
+    const sectionSel = document.getElementById('p_section');
+    const itemSel = document.getElementById('p_item');
+    const section = prevozStavke.find(s => s.section === sectionSel.value);
+    if (!section) return;
+    itemSel.innerHTML = section.items
+        .map(it => `<option value="${it.value}" data-heavy="${it.heavy ? '1' : '0'}">${it.name} (${it.value.toLocaleString('sr-RS')} RSD)</option>`)
+        .join('');
+}
+
+function populatePrevozAssemblySectionSelect() {
+    const sectionSel = document.getElementById('p_assemblySection');
+    sectionSel.innerHTML = prevozAssembly
+        .map(s => `<option value="${s.section}">${s.section}</option>`)
+        .join('');
+    populatePrevozAssemblyItemSelect();
+}
+
+function populatePrevozAssemblyItemSelect() {
+    const sectionSel = document.getElementById('p_assemblySection');
+    const itemSel = document.getElementById('p_assemblyItem');
+    const section = prevozAssembly.find(s => s.section === sectionSel.value);
+    if (!section) return;
+    itemSel.innerHTML = section.items.flatMap((it, i, arr) => [
+        `<option value="${it.disassembly}">${it.name} - Demontaža (${it.disassembly.toLocaleString('sr-RS')} RSD)</option>`,
+        `<option value="${it.assembly}">${it.name} - Montaža (${it.assembly.toLocaleString('sr-RS')} RSD)</option>`,
+        `<option value="${it.both}">${it.name} - Demontaža + Montaža (${it.both.toLocaleString('sr-RS')} RSD)</option>`,
+        ...(i < arr.length - 1 ? ['<option disabled>────────────────</option>'] : []),
+    ]).join('');
 }
 
 function populateAssemblySectionSelect() {
@@ -577,6 +1015,12 @@ populatePackSectionSelect();
 document.getElementById('s_packSection').addEventListener('change', populatePackItemSelect);
 populateAssemblySectionSelect();
 document.getElementById('s_assemblySection').addEventListener('change', populateAssemblyItemSelect);
+populateOdnosenjeSectionSelect();
+document.getElementById('o_section').addEventListener('change', populateOdnosenjeItemSelect);
+populatePrevozSectionSelect();
+document.getElementById('p_section').addEventListener('change', populatePrevozItemSelect);
+populatePrevozAssemblySectionSelect();
+document.getElementById('p_assemblySection').addEventListener('change', populatePrevozAssemblyItemSelect);
 function renderSelidbaLists() {
     renderList('s_itemsList',    state.selidba.items,    's_items',    ()=>{});
     renderList('s_packList',     state.selidba.pack,     's_pack',     ()=>{});
@@ -755,6 +1199,27 @@ document.getElementById('p_itemsList').addEventListener('click', function(e) {
 });
 document.getElementById('p_calcKm').addEventListener('click', () => calcKmForCalc('p', true));
 
+document.getElementById('p_addAssembly').addEventListener('click', function() {
+    const sel = document.getElementById('p_assemblyItem');
+    const qty = parseInt(document.getElementById('p_assemblyQty').value) || 0;
+    if (qty <= 0) { alert('Unesite količinu.'); return; }
+    const price = parseInt(sel.value);
+    const name = sel.options[sel.selectedIndex].text;
+    const arr = state.prevoz.assembly;
+    const ex = arr.find(x => x.name === name);
+    if (ex) ex.qty += qty; else arr.push({ name, price, qty });
+    document.getElementById('p_assemblyQty').value = 1;
+    renderList('p_assemblyList', arr, 'p_assembly', () => {});
+});
+
+document.getElementById('p_assemblyList').addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-remove')) {
+        const idx = Array.from(this.children).indexOf(e.target.closest('li'));
+        state.prevoz.assembly.splice(idx, 1);
+        renderList('p_assemblyList', state.prevoz.assembly, 'p_assembly', () => {});
+    }
+});
+
 document.getElementById('p_calcBtn').addEventListener('click', function() {
     const sprat1 = parseInt(document.getElementById('p_sprat1').value) || 0;
     const sprat2 = parseInt(document.getElementById('p_sprat2').value) || 0;
@@ -771,9 +1236,10 @@ document.getElementById('p_calcBtn').addEventListener('click', function() {
     const cenaVozilo = vozilo * voziloQty;
     const cenaKm = km * rate;
     const itemsTotal = state.prevoz.items.reduce((s, i) => s + i.price * i.qty, 0);
+    const asmTotal = state.prevoz.assembly.reduce((s, i) => s + i.price * i.qty, 0);
     const ls1 = liftSurcharge(state.prevoz.items, sprat1, lift1 || 'teretni');
     const ls2 = liftSurcharge(state.prevoz.items, sprat2, lift2 || 'teretni');
-    const base = cenaVozilo + cenaKm + itemsTotal + ls1 + ls2;
+    const base = cenaVozilo + cenaKm + itemsTotal + asmTotal + ls1 + ls2;
     const workers = Math.round(base * 0.25);
     const final = base + workers;
     state.prevoz.finalPrice = final;
@@ -785,6 +1251,7 @@ document.getElementById('p_calcBtn').addEventListener('click', function() {
     ${km > 0 ? `<div class="breakdown-row"><span>Kilometraža (${km} km × ${rate} RSD)</span><span>${formatRSD(cenaKm)}</span></div>` : ''}
     ${itemsTotal > 0 ? `<div class="breakdown-row"><span>Stavke</span><span>${formatRSD(itemsTotal)}</span></div>` : ''}
     ${(ls1+ls2) > 0 ? `<div class="breakdown-row"><span>Doplate za lift/sprat</span><span>${formatRSD(ls1+ls2)}</span></div>` : ''}
+    ${asmTotal > 0 ? `<div class="breakdown-row"><span>Montaža/demontaža</span><span>${formatRSD(asmTotal)}</span></div>` : ''}
     <div class="breakdown-row"><span>Radnici (+25%)</span><span>+${formatRSD(workers)}</span></div>
     <div class="breakdown-row total"><span>Procena ukupno</span><span>${formatRSD(final)}</span></div>
   `;
@@ -799,7 +1266,8 @@ document.getElementById('p_sendWhats').addEventListener('click', function() {
     const tel = document.getElementById('p_telefon').value.trim();
     if (!ime || !tel) { alert('Popunite ime i telefon.'); return; }
     const items = state.prevoz.items.map(i => i.name + ' ×' + i.qty).join(', ') || '—';
-    const msg = encodeURIComponent(`Zdravo, zanima me cena prevoza robe.\nIme: ${ime}\nTelefon: ${tel}\nStavke: ${items}\nProcena: ${formatRSD(state.prevoz.finalPrice)}`);
+    const asm = state.prevoz.assembly.map(i => i.name + ' ×' + i.qty).join(', ') || '—';
+    const msg = encodeURIComponent(`Zdravo, zanima me cena prevoza robe.\nIme: ${ime}\nTelefon: ${tel}\nStavke: ${items}\nMontaža: ${asm}\nProcena: ${formatRSD(state.prevoz.finalPrice)}`);
     window.open('https://wa.me/381659410699?text=' + msg, '_blank');
 });
 
@@ -889,7 +1357,7 @@ document.getElementById('o_sendWhats').addEventListener('click', function() {
 });
 
 // Clamp quantity inputs to 0–100
-['s_qty','s_packQty','s_boxes','s_assemblyQty','p_qty','o_qty'].forEach(id => {
+['s_qty','s_packQty','s_boxes','s_assemblyQty','p_qty','p_assemblyQty','o_qty'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
     el.addEventListener('input', function() {

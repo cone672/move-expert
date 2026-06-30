@@ -1593,13 +1593,54 @@ input, select, textarea, .calc-input {
         display: block;
         border-radius: var(--border-radius-2);
     }
+}
 
-    .image-caption {
-        color: var(--text-c2);
-        font-size: var(--text-s2);
-        line-height: 1.6;
+.image-slider {
+    position: relative;
+
+    .image-slider-track {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: var(--border-radius-2);
+        overflow: hidden;
+    }
+
+    .image-slider-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0;
+        opacity: 0;
+        transition: opacity 600ms ease;
+    }
+
+    .image-slider-slide.is-active {
+        opacity: 1;
+    }
+
+    .image-slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-2);
         margin-top: var(--spacing-2);
-        text-align: center;
+    }
+
+    .image-slider-dot {
+        width: 9px;
+        height: 9px;
+        padding: 0;
+        border: 1px solid var(--accent-t3);
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .image-slider-dot.is-active {
+        background: var(--accent);
+        border-color: var(--accent);
     }
 }
 

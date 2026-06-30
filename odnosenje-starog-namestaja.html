@@ -54,12 +54,8 @@ heroSubtitle: "Pametna selidba počinje sa expertima"
         <span class="wa-cta-icon">📲</span>
         <span class="wa-cta-text">Pošaljite slike na WhatsApp, dobijte procenu i dogovorite dolazak.</span>
     </a>
-    <div class="image-card">
-        <img alt="Odvoz i iznošenje starog nameštaja Beograd" src="https://picsum.photos/600/300"/>
-        <div class="image-caption">Primer utovara i odnošenja starog nameštaja. Ozbiljna fotografija odmah diže poverenje i
-            pokazuje da imate vozilo i praktično iskustvo.
-        </div>
-    </div>
+    {% set imageSliderAlt = "Odvoz i iznošenje starog nameštaja Beograd" %}
+    {% include "image-slider.njk" %}
     <div class="long-card">
         <h2>Kako izgleda usluga</h2>
         <p>U većini slučajeva klijent želi brzo i jednostavno rešenje. Nameštaj stoji u stanu, kući, podrumu ili poslovnom

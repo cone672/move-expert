@@ -1,0 +1,12 @@
+{% if sliderImages and sliderImages.length %}
+<div class="image-card">
+    <div class="image-slider">
+        <div class="image-slider-track">
+            {% for image in sliderImages %}
+            <img alt="{{ imageSliderAlt | default('Fotografija sa terena') }}" class="image-slider-slide" src="{{ image }}"/>
+            {% endfor %}
+        </div>
+        <div class="image-slider-dots"></div>
+    </div>
+</div>
+{% endif %}

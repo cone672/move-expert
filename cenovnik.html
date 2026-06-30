@@ -523,38 +523,12 @@ heroSubtitle: "Pametna selidba počinje sa expertima"
                 <div class="card-title">🪑 Stavke za prevoz</div>
                 <div class="calc-row">
                     <div>
+                        <label class="card-label">Sekcija</label>
+                        <select class="calc-input" id="p_section"></select>
+                    </div>
+                    <div>
                         <label class="card-label">Stavka</label>
-                        <select class="calc-input" id="p_item">
-                            <option value="600" data-heavy="1">Kauč/Sofa (600 RSD)</option>
-                            <option value="700" data-heavy="1">Kauč trosed (700 RSD)</option>
-                            <option value="700" data-heavy="1">Ugaona garnitura (700 RSD)</option>
-                            <option value="300" data-heavy="0">Fotelja (300 RSD)</option>
-                            <option value="800" data-heavy="0">Frižider (800 RSD)</option>
-                            <option value="800" data-heavy="0">Zamrzivač (800 RSD)</option>
-                            <option value="700" data-heavy="0">Veš mašina (700 RSD)</option>
-                            <option value="600" data-heavy="0">Mašina za sudove (600 RSD)</option>
-                            <option value="400" data-heavy="0">TA peć (400 RSD)</option>
-                            <option value="800" data-heavy="1">Ormar (800 RSD)</option>
-                            <option value="700" data-heavy="1">Bračni krevet (700 RSD)</option>
-                            <option value="500" data-heavy="1">Dečiji krevet (500 RSD)</option>
-                            <option value="300" data-heavy="1">Dušek (300 RSD)</option>
-                            <option value="600" data-heavy="0">Trpezarijski sto (600 RSD)</option>
-                            <option value="300" data-heavy="0">Sto (300 RSD)</option>
-                            <option value="500" data-heavy="0">Velika komoda (500 RSD)</option>
-                            <option value="350" data-heavy="0">TV komoda (350 RSD)</option>
-                            <option value="350" data-heavy="0">Regal/polica (350 RSD)</option>
-                            <option value="200" data-heavy="0">Noćni ormarić (200 RSD)</option>
-                            <option value="400" data-heavy="0">TV do 55" (400 RSD)</option>
-                            <option value="200" data-heavy="0">Stolica (200 RSD)</option>
-                            <option value="200" data-heavy="0">Tepih (200 RSD)</option>
-                            <option value="200" data-heavy="0">Ogledalo/slika (200 RSD)</option>
-                            <option value="300" data-heavy="0">Bicikl (300 RSD)</option>
-                            <option value="250" data-heavy="0">Mikrotalasna/kuhinjski aparat (250 RSD)</option>
-                            <option value="200" data-heavy="0">Laptop/PC (200 RSD)</option>
-                            <option value="180" data-heavy="0">Kofer (180 RSD)</option>
-                            <option value="250" data-heavy="0">Džak garderobe (250 RSD)</option>
-                            <option value="350" data-heavy="0">Težak džak stvari (350 RSD)</option>
-                        </select>
+                        <select class="calc-input" id="p_item"></select>
                     </div>
                     <div>
                         <label class="card-label">Količina</label>
@@ -563,6 +537,25 @@ heroSubtitle: "Pametna selidba počinje sa expertima"
                 </div>
                 <button class="btn-calc-add" id="p_addItem" type="button">+ Dodaj stavku</button>
                 <ul class="added-list" id="p_itemsList"></ul>
+            </div>
+            <div class="card">
+                <div class="card-title">🔧 Montaža / demontaža nameštaja</div>
+                <div class="calc-row">
+                    <div>
+                        <label class="card-label">Sekcija</label>
+                        <select class="calc-input" id="p_assemblySection"></select>
+                    </div>
+                    <div>
+                        <label class="card-label">Stavka</label>
+                        <select class="calc-input" id="p_assemblyItem"></select>
+                    </div>
+                    <div>
+                        <label class="card-label">Količina</label>
+                        <input class="calc-input" type="number" id="p_assemblyQty" value="0" min="0" max="100" inputmode="numeric">
+                    </div>
+                </div>
+                <button class="btn-calc-add" id="p_addAssembly" type="button">+ Dodaj</button>
+                <ul class="added-list" id="p_assemblyList"></ul>
             </div>
             <button class="btn-calculate" id="p_calcBtn" type="button">🧮 Izračunaj cenu</button>
             <div class="result-box" id="p_result">
@@ -650,47 +643,12 @@ heroSubtitle: "Pametna selidba počinje sa expertima"
                 <div class="card-title">🪑 Nameštaj / predmeti za odnošenje</div>
                 <div class="calc-row">
                     <div>
+                        <label class="card-label">Sekcija</label>
+                        <select class="calc-input" id="o_section"></select>
+                    </div>
+                    <div>
                         <label class="card-label">Stavka</label>
-                        <select class="calc-input" id="o_item">
-                            <option value="600" data-heavy="1">Kauč/Sofa (600 RSD)</option>
-                            <option value="700" data-heavy="1">Kauč trosed (700 RSD)</option>
-                            <option value="700" data-heavy="1">Ugaona garnitura (700 RSD)</option>
-                            <option value="300" data-heavy="0">Fotelja (300 RSD)</option>
-                            <option value="800" data-heavy="0">Frižider (800 RSD)</option>
-                            <option value="800" data-heavy="0">Zamrzivač (800 RSD)</option>
-                            <option value="700" data-heavy="0">Veš mašina (700 RSD)</option>
-                            <option value="600" data-heavy="0">Mašina za sudove (600 RSD)</option>
-                            <option value="600" data-heavy="0">Šporet (600 RSD)</option>
-                            <option value="400" data-heavy="0">TA peć (400 RSD)</option>
-                            <option value="800" data-heavy="1">Ormar (800 RSD)</option>
-                            <option value="700" data-heavy="1">Bračni krevet (700 RSD)</option>
-                            <option value="500" data-heavy="1">Dečiji krevet (500 RSD)</option>
-                            <option value="300" data-heavy="1">Dušek (300 RSD)</option>
-                            <option value="600" data-heavy="0">Trpezarijski sto (600 RSD)</option>
-                            <option value="300" data-heavy="0">Sto (300 RSD)</option>
-                            <option value="500" data-heavy="0">Velika komoda (500 RSD)</option>
-                            <option value="350" data-heavy="0">TV komoda (350 RSD)</option>
-                            <option value="350" data-heavy="0">Regal/polica (350 RSD)</option>
-                            <option value="200" data-heavy="0">Noćni ormarić (200 RSD)</option>
-                            <option value="400" data-heavy="0">TV do 55" (400 RSD)</option>
-                            <option value="200" data-heavy="0">Stolica (200 RSD)</option>
-                            <option value="200" data-heavy="0">Tepih (200 RSD)</option>
-                            <option value="200" data-heavy="0">Ogledalo/slika (200 RSD)</option>
-                            <option value="300" data-heavy="0">Bicikl (300 RSD)</option>
-                            <option value="250" data-heavy="0">Mikrotalasna/kuhinjski aparat (250 RSD)</option>
-                            <option value="200" data-heavy="0">Laptop/PC (200 RSD)</option>
-                            <option value="180" data-heavy="0">Kofer (180 RSD)</option>
-                            <option value="250" data-heavy="0">Džak garderobe (250 RSD)</option>
-                            <option value="350" data-heavy="0">Težak džak stvari (350 RSD)</option>
-                            <option value="400" data-heavy="0">Džak šuta 25 kg (400 RSD)</option>
-                            <option value="700" data-heavy="0">Džak šuta 50 kg (700 RSD)</option>
-                            <option value="300" data-heavy="0">Radijator (300 RSD)</option>
-                            <option value="400" data-heavy="0">Bojler (400 RSD)</option>
-                            <option value="400" data-heavy="0">Klima uređaj (400 RSD)</option>
-                            <option value="400" data-heavy="0">Kuhinjski elementi (400 RSD)</option>
-                            <option value="300" data-heavy="0">Vrata (300 RSD)</option>
-                            <option value="300" data-heavy="0">Prozori (300 RSD)</option>
-                        </select>
+                        <select class="calc-input" id="o_item"></select>
                     </div>
                     <div>
                         <label class="card-label">Količina</label>
