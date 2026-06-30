@@ -1,0 +1,82 @@
+# Placeholder for the production deploy. Currently just echoes — uncomment
+# and adapt the logic below (mirrors deploy-dev.yml with _PROD
+# secrets/variables) once we're ready to wire up actual production publishing.
+#
+# Required repository variables (Settings → Secrets and variables → Actions → Variables):
+#   FTP_SERVER_PROD    e.g. ftp.moveexpertselidbe.com
+#   FTP_USERNAME_PROD  e.g. deployment@moveexpertselidbe.com
+#
+# Required repository secrets (Settings → Secrets and variables → Actions → Secrets):
+#   FTP_PASSWORD_PROD  the prod FTP account password
+#   GOOGLE_API_KEY      (used by the Eleventy build, same as the dev workflow)
+#   GOOGLE_PLACE_ID     (used by the Eleventy build, same as the dev workflow)
+
+name: Deploy to production
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # environment: production
+    # concurrency:
+    #   group: ${{ github.workflow }}-${{ github.ref }}
+    #   cancel-in-progress: false
+    steps:
+      - run: echo "Starting prod deploy"
+
+      # - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # 6.0.2
+      #
+      # - name: Setup Node
+      #   uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # 6.3.0
+      #   with:
+      #     node-version: '22'
+      #
+      # - name: Cache npm
+      #   uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+      #
+      # - name: Restore Eleventy .cache
+      #   uses: actions/cache/restore@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
+      #   with:
+      #     path: ./.cache
+      #     key: ${{ runner.os }}-eleventy-fetch-${{ github.run_id }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-eleventy-fetch-
+      #
+      # - run: npm ci
+      #
+      # - name: Build site
+      #   run: npm run build
+      #   env:
+      #     GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      #     GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+      #
+      # - name: Save Eleventy .cache
+      #   uses: actions/cache/save@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # 5.0.3
+      #   if: always()
+      #   with:
+      #     path: ./.cache
+      #     key: ${{ runner.os }}-eleventy-fetch-${{ github.run_id }}
+      #
+      # - name: Deploy to FTP (explicit FTPS)
+      #   uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
+      #   with:
+      #     server: ${{ vars.FTP_SERVER_PROD }}
+      #     username: ${{ vars.FTP_USERNAME_PROD }}
+      #     password: ${{ secrets.FTP_PASSWORD_PROD }}
+      #     protocol: ftps
+      #     port: 21
+      #     local-dir: ./_site/
+      #     server-dir: ./
+      #     # Keep server-side files the build does not manage (TLS validation, cgi-bin).
+      #     exclude: |
+      #       **/.git*
+      #       **/.git*/**
+      #       **/.well-known/**
+      #       **/cgi-bin/**
+
+      - run: echo "Finishing prod deploy"
