@@ -134,10 +134,10 @@ const selidbaLicneStvariNamestaj = [
     {
         section: 'Dnevna soba',
         items: [
-            { name: 'Kauč / sofa', value: 700, heavy: false },
-            { name: 'Dvosed', value: 700, heavy: false },
+            { name: 'Kauč / sofa', value: 700, heavy: true },
+            { name: 'Dvosed', value: 700, heavy: true },
             { name: 'Trosed', value: 900, heavy: false },
-            { name: 'Ugaona garnitura', value: 2000, heavy: false },
+            { name: 'Ugaona garnitura', value: 2000, heavy: true },
             { name: 'Fotelja', value: 400, heavy: false },
             { name: 'Tabure', value: 200, heavy: false },
         ]
@@ -145,10 +145,10 @@ const selidbaLicneStvariNamestaj = [
     {
         section: 'Kreveti',
         items: [
-            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: false },
-            { name: 'Krevet samac', value: 1200, heavy: false },
-            { name: 'Dečiji krevet', value: 1000, heavy: false },
-            { name: 'Krevet na sprat', value: 3000, heavy: false },
+            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: true },
+            { name: 'Krevet samac', value: 1200, heavy: true },
+            { name: 'Dečiji krevet', value: 1000, heavy: true },
+            { name: 'Krevet na sprat', value: 3000, heavy: true },
             { name: 'Dušek bračni', value: 700, heavy: false },
             { name: 'Dušek singl', value: 500, heavy: false },
         ]
@@ -158,26 +158,26 @@ const selidbaLicneStvariNamestaj = [
         items: [
             { name: 'Mali ormar (u komadu)', value: 700, heavy: false },
             { name: 'Mali ormar (u delovima)', value: 1000, heavy: false },
-            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: false },
+            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: true },
             { name: 'Srednji ormar (u delovima)', value: 2000, heavy: false },
-            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: false },
-            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: false },
+            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: true },
+            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: true },
         ]
     },
     {
         section: 'Regali i police',
         items: [
             { name: 'Mala polica', value: 1000, heavy: false },
-            { name: 'Mali regal', value: 2000, heavy: false },
-            { name: 'Srednji regal', value: 3000, heavy: false },
-            { name: 'Veliki regal', value: 4000, heavy: false },
-            { name: 'Vitrina', value: 1500, heavy: false },
+            { name: 'Mali regal', value: 2000, heavy: true },
+            { name: 'Srednji regal', value: 3000, heavy: true },
+            { name: 'Veliki regal', value: 4000, heavy: true },
+            { name: 'Vitrina', value: 1500, heavy: true },
         ]
     },
     {
         section: 'Komode',
         items: [
-            { name: 'Komoda velika', value: 650, heavy: false },
+            { name: 'Komoda velika', value: 650, heavy: true },
             { name: 'Komoda mala', value: 450, heavy: false },
             { name: 'Noćni ormarić', value: 300, heavy: false },
         ]
@@ -185,33 +185,33 @@ const selidbaLicneStvariNamestaj = [
     {
         section: 'Kuhinja i bela tehnika',
         items: [
-            { name: 'Frižider', value: 1000, heavy: false },
-            { name: 'Veliki frižider', value: 1500, heavy: false },
-            { name: 'Side by side frižider', value: 2000, heavy: false },
-            { name: 'Zamrzivač', value: 1000, heavy: false },
-            { name: 'Škrinja zamrzivač', value: 1200, heavy: false },
-            { name: 'Veš mašina', value: 700, heavy: false },
+            { name: 'Frižider', value: 1000, heavy: true },
+            { name: 'Veliki frižider', value: 1500, heavy: true },
+            { name: 'Side by side frižider', value: 2000, heavy: true },
+            { name: 'Zamrzivač', value: 1000, heavy: true },
+            { name: 'Škrinja zamrzivač', value: 1200, heavy: true },
+            { name: 'Veš mašina', value: 700, heavy: true },
             { name: 'Sušilica veša', value: 700, heavy: false },
-            { name: 'Mašina za sudove', value: 600, heavy: false },
-            { name: 'Šporet', value: 600, heavy: false },
-            { name: 'Ugradna rerna', value: 400, heavy: false },
-            { name: 'Mikrotalasna', value: 200, heavy: false },
+            { name: 'Mašina za sudove', value: 600, heavy: true },
+            { name: 'Šporet', value: 600, heavy: true },
+            { name: 'Ugradna rerna', value: 400, heavy: true },
+            { name: 'Mikrotalasna', value: 200, heavy: true },
             { name: 'Aspirator', value: 200, heavy: false },
         ]
     },
     {
         section: 'Kuhinjski elementi',
         items: [
-            { name: 'Gornji kuhinjski element', value: 500, heavy: false },
-            { name: 'Donji kuhinjski element', value: 800, heavy: false },
-            { name: 'Kuhinjski pult', value: 2000, heavy: false },
+            { name: 'Gornji kuhinjski element', value: 500, heavy: true },
+            { name: 'Donji kuhinjski element', value: 800, heavy: true },
+            { name: 'Kuhinjski pult', value: 2000, heavy: true },
         ]
     },
     {
         section: 'Kupatilo',
         items: [
             { name: 'Kupatilski ormarić', value: 500, heavy: false },
-            { name: 'Bojler', value: 700, heavy: false },
+            { name: 'Bojler', value: 700, heavy: true },
         ]
     },
     {
@@ -229,26 +229,26 @@ const selidbaLicneStvariNamestaj = [
     {
         section: 'Džakovi i specijalni predmeti',
         items: [
-            { name: 'Džak šuta 25kg', value: 400, heavy: false },
-            { name: 'Džak šuta 50kg', value: 700, heavy: false },
-            { name: 'Putni kofer', value: 300, heavy: false },
+            { name: 'Džak šuta 25kg', value: 400, heavy: true },
+            { name: 'Džak šuta 50kg', value: 700, heavy: true },
+            { name: 'Putni kofer', value: 300, heavy: true },
         ]
     },
     {
         section: 'Lakši teški predmeti (do oko 100 kg)',
         items: [
-            { name: 'TA peć do 100 kg', value: 2000, heavy: false },
-            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: false },
-            { name: 'Sef do 100 kg', value: 2000, heavy: false },
-            { name: 'Traka za trčanje', value: 2000, heavy: false },
-            { name: 'Sobni bicikl', value: 1000, heavy: false },
-            { name: 'Eliptični trenažer', value: 1500, heavy: false },
-            { name: 'Veslačka sprava', value: 1200, heavy: false },
-            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: false },
-            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: false },
-            { name: 'Server ormar do 100 kg', value: 2000, heavy: false },
-            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: false },
-            { name: 'Kotao do 100 kg', value: 2000, heavy: false },
+            { name: 'TA peć do 100 kg', value: 2000, heavy: true },
+            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: true },
+            { name: 'Sef do 100 kg', value: 2000, heavy: true },
+            { name: 'Traka za trčanje', value: 2000, heavy: true },
+            { name: 'Sobni bicikl', value: 1000, heavy: true },
+            { name: 'Eliptični trenažer', value: 1500, heavy: true },
+            { name: 'Veslačka sprava', value: 1200, heavy: true },
+            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: true },
+            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: true },
+            { name: 'Server ormar do 100 kg', value: 2000, heavy: true },
+            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: true },
+            { name: 'Kotao do 100 kg', value: 2000, heavy: true },
         ]
     },
     {
@@ -260,10 +260,13 @@ const selidbaLicneStvariNamestaj = [
             { name: 'Saksija velika', value: 300, heavy: false },
             { name: 'Velika saksija sa zemljom', value: 500, heavy: false },
             { name: 'Ogledalo veliko', value: 400, heavy: false },
-            { name: 'Akvarijum', value: 700, heavy: false },
+            { name: 'Akvarijum', value: 700, heavy: true },
             { name: 'Kolica za bebe', value: 300, heavy: false },
             { name: 'Invalidska kolica', value: 500, heavy: false },
-            { name: 'Veliki roštilj', value: 800, heavy: false },
+            { name: 'Veliki roštilj', value: 800, heavy: true },
+            { name: 'Klima uređaj', value: 400, heavy: false },
+            { name: 'Vrata', value: 300, heavy: true },
+            { name: 'Prozori', value: 300, heavy: true },
         ]
     },
 ];
@@ -380,6 +383,7 @@ const selidbaStrecPakovanje = [
         items: [
             { name: 'Kupatilski ormarić', value: 150 },
             { name: 'Ogledalo veliko', value: 200 },
+            { name: 'Radijator', value: 300, heavy: false },
         ]
     },
     {
@@ -513,10 +517,10 @@ const odnosenjeStavke = [
     {
         section: 'Dnevna soba',
         items: [
-            { name: 'Kauč / sofa', value: 700, heavy: false },
-            { name: 'Dvosed', value: 700, heavy: false },
-            { name: 'Trosed', value: 900, heavy: false },
-            { name: 'Ugaona garnitura', value: 2000, heavy: false },
+            { name: 'Kauč / sofa', value: 700, heavy: true },
+            { name: 'Dvosed', value: 700, heavy: true },
+            { name: 'Trosed', value: 900, heavy: true },
+            { name: 'Ugaona garnitura', value: 2000, heavy: true },
             { name: 'Fotelja', value: 400, heavy: false },
             { name: 'Tabure', value: 200, heavy: false },
         ]
@@ -524,10 +528,10 @@ const odnosenjeStavke = [
     {
         section: 'Kreveti',
         items: [
-            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: false },
-            { name: 'Krevet samac', value: 1200, heavy: false },
-            { name: 'Dečiji krevet', value: 1000, heavy: false },
-            { name: 'Krevet na sprat', value: 3000, heavy: false },
+            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: true },
+            { name: 'Krevet samac', value: 1200, heavy: true },
+            { name: 'Dečiji krevet', value: 1000, heavy: true },
+            { name: 'Krevet na sprat', value: 3000, heavy: true },
             { name: 'Dušek bračni', value: 700, heavy: false },
             { name: 'Dušek singl', value: 500, heavy: false },
         ]
@@ -537,26 +541,26 @@ const odnosenjeStavke = [
         items: [
             { name: 'Mali ormar (u komadu)', value: 700, heavy: false },
             { name: 'Mali ormar (u delovima)', value: 1000, heavy: false },
-            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: false },
-            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: false },
-            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: false },
-            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: false },
+            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: true },
+            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: true },
+            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: true },
+            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: true },
         ]
     },
     {
         section: 'Regali i police',
         items: [
             { name: 'Mala polica', value: 1000, heavy: false },
-            { name: 'Mali regal', value: 2000, heavy: false },
-            { name: 'Srednji regal', value: 3000, heavy: false },
-            { name: 'Veliki regal', value: 4000, heavy: false },
-            { name: 'Vitrina', value: 1500, heavy: false },
+            { name: 'Mali regal', value: 2000, heavy: true },
+            { name: 'Srednji regal', value: 3000, heavy: true },
+            { name: 'Veliki regal', value: 4000, heavy: true },
+            { name: 'Vitrina', value: 1500, heavy: true },
         ]
     },
     {
         section: 'Komode',
         items: [
-            { name: 'Komoda velika', value: 650, heavy: false },
+            { name: 'Komoda velika', value: 650, heavy: true },
             { name: 'Komoda mala', value: 450, heavy: false },
             { name: 'Noćni ormarić', value: 300, heavy: false },
         ]
@@ -564,33 +568,33 @@ const odnosenjeStavke = [
     {
         section: 'Kuhinja i bela tehnika',
         items: [
-            { name: 'Frižider', value: 1000, heavy: false },
-            { name: 'Veliki frižider', value: 1500, heavy: false },
-            { name: 'Side by side frižider', value: 2000, heavy: false },
-            { name: 'Zamrzivač', value: 1000, heavy: false },
-            { name: 'Škrinja zamrzivač', value: 1200, heavy: false },
-            { name: 'Veš mašina', value: 700, heavy: false },
-            { name: 'Sušilica veša', value: 700, heavy: false },
-            { name: 'Mašina za sudove', value: 600, heavy: false },
-            { name: 'Šporet', value: 600, heavy: false },
-            { name: 'Ugradna rerna', value: 400, heavy: false },
-            { name: 'Mikrotalasna', value: 200, heavy: false },
+            { name: 'Frižider', value: 1000, heavy: true },
+            { name: 'Veliki frižider', value: 1500, heavy: true },
+            { name: 'Side by side frižider', value: 2000, heavy: true },
+            { name: 'Zamrzivač', value: 1000, heavy: true },
+            { name: 'Škrinja zamrzivač', value: 1200, heavy: true },
+            { name: 'Veš mašina', value: 700, heavy: true },
+            { name: 'Sušilica veša', value: 700, heavy: true },
+            { name: 'Mašina za sudove', value: 600, heavy: true },
+            { name: 'Šporet', value: 600, heavy: true },
+            { name: 'Ugradna rerna', value: 400, heavy: true },
+            { name: 'Mikrotalasna', value: 200, heavy: true },
             { name: 'Aspirator', value: 200, heavy: false },
         ]
     },
     {
         section: 'Kuhinjski elementi',
         items: [
-            { name: 'Gornji kuhinjski element', value: 500, heavy: false },
-            { name: 'Donji kuhinjski element', value: 800, heavy: false },
-            { name: 'Kuhinjski pult', value: 2000, heavy: false },
+            { name: 'Gornji kuhinjski element', value: 500, heavy: true },
+            { name: 'Donji kuhinjski element', value: 800, heavy: true },
+            { name: 'Kuhinjski pult', value: 2000, heavy: true },
         ]
     },
     {
         section: 'Kupatilo',
         items: [
             { name: 'Kupatilski ormarić', value: 500, heavy: false },
-            { name: 'Bojler', value: 700, heavy: false },
+            { name: 'Bojler', value: 700, heavy: true },
             { name: 'Radijator', value: 300, heavy: false },
         ]
     },
@@ -609,26 +613,26 @@ const odnosenjeStavke = [
     {
         section: 'Džakovi i specijalni predmeti',
         items: [
-            { name: 'Džak šuta 25kg', value: 400, heavy: false },
-            { name: 'Džak šuta 50kg', value: 700, heavy: false },
+            { name: 'Džak šuta 25kg', value: 400, heavy: true },
+            { name: 'Džak šuta 50kg', value: 700, heavy: true },
             { name: 'Putni kofer', value: 300, heavy: false },
         ]
     },
     {
         section: 'Lakši teški predmeti (do oko 100 kg)',
         items: [
-            { name: 'TA peć do 100 kg', value: 2000, heavy: false },
-            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: false },
-            { name: 'Sef do 100 kg', value: 2000, heavy: false },
-            { name: 'Traka za trčanje', value: 2000, heavy: false },
-            { name: 'Sobni bicikl', value: 1000, heavy: false },
-            { name: 'Eliptični trenažer', value: 1500, heavy: false },
-            { name: 'Veslačka sprava', value: 1200, heavy: false },
-            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: false },
-            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: false },
-            { name: 'Server ormar do 100 kg', value: 2000, heavy: false },
-            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: false },
-            { name: 'Kotao do 100 kg', value: 2000, heavy: false },
+            { name: 'TA peć do 100 kg', value: 2000, heavy: true },
+            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: true },
+            { name: 'Sef do 100 kg', value: 2000, heavy: true },
+            { name: 'Traka za trčanje', value: 2000, heavy: true },
+            { name: 'Sobni bicikl', value: 1000, heavy: true },
+            { name: 'Eliptični trenažer', value: 1500, heavy: true },
+            { name: 'Veslačka sprava', value: 1200, heavy: true },
+            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: true },
+            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: true },
+            { name: 'Server ormar do 100 kg', value: 2000, heavy: true },
+            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: true },
+            { name: 'Kotao do 100 kg', value: 2000, heavy: true },
         ]
     },
     {
@@ -640,13 +644,13 @@ const odnosenjeStavke = [
             { name: 'Saksija velika', value: 300, heavy: false },
             { name: 'Velika saksija sa zemljom', value: 500, heavy: false },
             { name: 'Ogledalo veliko', value: 400, heavy: false },
-            { name: 'Akvarijum', value: 700, heavy: false },
+            { name: 'Akvarijum', value: 700, heavy: true },
             { name: 'Kolica za bebe', value: 300, heavy: false },
             { name: 'Invalidska kolica', value: 500, heavy: false },
-            { name: 'Veliki roštilj', value: 800, heavy: false },
+            { name: 'Veliki roštilj', value: 800, heavy: true },
             { name: 'Klima uređaj', value: 400, heavy: false },
-            { name: 'Vrata', value: 300, heavy: false },
-            { name: 'Prozori', value: 300, heavy: false },
+            { name: 'Vrata', value: 300, heavy: true },
+            { name: 'Prozori', value: 300, heavy: true },
         ]
     },
 ];
@@ -656,10 +660,10 @@ const prevozStavke = [
     {
         section: 'Dnevna soba',
         items: [
-            { name: 'Kauč / sofa', value: 700, heavy: false },
-            { name: 'Dvosed', value: 700, heavy: false },
-            { name: 'Trosed', value: 900, heavy: false },
-            { name: 'Ugaona garnitura', value: 2000, heavy: false },
+            { name: 'Kauč / sofa', value: 700, heavy: true },
+            { name: 'Dvosed', value: 700, heavy: true },
+            { name: 'Trosed', value: 900, heavy: true },
+            { name: 'Ugaona garnitura', value: 2000, heavy: true },
             { name: 'Fotelja', value: 400, heavy: false },
             { name: 'Tabure', value: 200, heavy: false },
         ]
@@ -667,10 +671,10 @@ const prevozStavke = [
     {
         section: 'Kreveti',
         items: [
-            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: false },
-            { name: 'Krevet samac', value: 1200, heavy: false },
-            { name: 'Dečiji krevet', value: 1000, heavy: false },
-            { name: 'Krevet na sprat', value: 3000, heavy: false },
+            { name: 'Bračni krevet (u delovima)', value: 2000, heavy: true },
+            { name: 'Krevet samac', value: 1200, heavy: true },
+            { name: 'Dečiji krevet', value: 1000, heavy: true },
+            { name: 'Krevet na sprat', value: 3000, heavy: true },
             { name: 'Dušek bračni', value: 700, heavy: false },
             { name: 'Dušek singl', value: 500, heavy: false },
         ]
@@ -680,43 +684,43 @@ const prevozStavke = [
         items: [
             { name: 'Mali ormar (u komadu)', value: 700, heavy: false },
             { name: 'Mali ormar (u delovima)', value: 1000, heavy: false },
-            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: false },
-            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: false },
-            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: false },
-            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: false },
+            { name: 'Srednji ormar (u komadu)', value: 1000, heavy: true },
+            { name: 'Srednji ormar (u delovima)', value: 2000, heavy: true },
+            { name: 'Veliki ormar (u delovima)', value: 3000, heavy: true },
+            { name: 'Klizni plakar (u delovima)', value: 3000, heavy: true },
         ]
     },
     {
         section: 'Regali i police',
         items: [
             { name: 'Mala polica', value: 1000, heavy: false },
-            { name: 'Mali regal', value: 2000, heavy: false },
-            { name: 'Srednji regal', value: 3000, heavy: false },
-            { name: 'Veliki regal', value: 4000, heavy: false },
-            { name: 'Vitrina', value: 1500, heavy: false },
+            { name: 'Mali regal', value: 2000, heavy: true },
+            { name: 'Srednji regal', value: 3000, heavy: true },
+            { name: 'Veliki regal', value: 4000, heavy: true },
+            { name: 'Vitrina', value: 1500, heavy: true },
         ]
     },
     {
         section: 'Komode',
         items: [
-            { name: 'Komoda velika', value: 650, heavy: false },
-            { name: 'Komoda mala', value: 450, heavy: false },
+            { name: 'Komoda velika', value: 650, heavy: true },
+            { name: 'Komoda mala', value: 450, heavy: true },
             { name: 'Noćni ormarić', value: 300, heavy: false },
         ]
     },
     {
         section: 'Kuhinja i bela tehnika',
         items: [
-            { name: 'Frižider', value: 1000, heavy: false },
-            { name: 'Veliki frižider', value: 1500, heavy: false },
-            { name: 'Side by side frižider', value: 2000, heavy: false },
-            { name: 'Zamrzivač', value: 1000, heavy: false },
-            { name: 'Škrinja zamrzivač', value: 1200, heavy: false },
-            { name: 'Veš mašina', value: 700, heavy: false },
-            { name: 'Sušilica veša', value: 700, heavy: false },
-            { name: 'Mašina za sudove', value: 600, heavy: false },
-            { name: 'Šporet', value: 600, heavy: false },
-            { name: 'Ugradna rerna', value: 400, heavy: false },
+            { name: 'Frižider', value: 1000, heavy: true },
+            { name: 'Veliki frižider', value: 1500, heavy: true },
+            { name: 'Side by side frižider', value: 2000, heavy: true },
+            { name: 'Zamrzivač', value: 1000, heavy: true },
+            { name: 'Škrinja zamrzivač', value: 1200, heavy: true },
+            { name: 'Veš mašina', value: 700, heavy: true },
+            { name: 'Sušilica veša', value: 700, heavy: true },
+            { name: 'Mašina za sudove', value: 600, heavy: true },
+            { name: 'Šporet', value: 600, heavy: true },
+            { name: 'Ugradna rerna', value: 400, heavy: true },
             { name: 'Mikrotalasna', value: 200, heavy: false },
             { name: 'Aspirator', value: 200, heavy: false },
         ]
@@ -724,16 +728,17 @@ const prevozStavke = [
     {
         section: 'Kuhinjski elementi',
         items: [
-            { name: 'Gornji kuhinjski element', value: 500, heavy: false },
-            { name: 'Donji kuhinjski element', value: 800, heavy: false },
-            { name: 'Kuhinjski pult', value: 2000, heavy: false },
+            { name: 'Gornji kuhinjski element', value: 500, heavy: true },
+            { name: 'Donji kuhinjski element', value: 800, heavy: true },
+            { name: 'Kuhinjski pult', value: 2000, heavy: true },
         ]
     },
     {
         section: 'Kupatilo',
         items: [
             { name: 'Kupatilski ormarić', value: 500, heavy: false },
-            { name: 'Bojler', value: 700, heavy: false },
+            { name: 'Bojler', value: 700, heavy: true },
+            { name: 'Radijator', value: 300, heavy: false },
         ]
     },
     {
@@ -751,26 +756,26 @@ const prevozStavke = [
     {
         section: 'Džakovi i specijalni predmeti',
         items: [
-            { name: 'Džak šuta 25kg', value: 400, heavy: false },
-            { name: 'Džak šuta 50kg', value: 700, heavy: false },
+            { name: 'Džak šuta 25kg', value: 400, heavy: true },
+            { name: 'Džak šuta 50kg', value: 700, heavy: true },
             { name: 'Putni kofer', value: 300, heavy: false },
         ]
     },
     {
         section: 'Lakši teški predmeti (do oko 100 kg)',
         items: [
-            { name: 'TA peć do 100 kg', value: 2000, heavy: false },
-            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: false },
-            { name: 'Sef do 100 kg', value: 2000, heavy: false },
-            { name: 'Traka za trčanje', value: 2000, heavy: false },
-            { name: 'Sobni bicikl', value: 1000, heavy: false },
-            { name: 'Eliptični trenažer', value: 1500, heavy: false },
-            { name: 'Veslačka sprava', value: 1200, heavy: false },
-            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: false },
-            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: false },
-            { name: 'Server ormar do 100 kg', value: 2000, heavy: false },
-            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: false },
-            { name: 'Kotao do 100 kg', value: 2000, heavy: false },
+            { name: 'TA peć do 100 kg', value: 2000, heavy: true },
+            { name: 'Peć na pelet do 100 kg', value: 2000, heavy: true },
+            { name: 'Sef do 100 kg', value: 2000, heavy: true },
+            { name: 'Traka za trčanje', value: 2000, heavy: true },
+            { name: 'Sobni bicikl', value: 1000, heavy: true },
+            { name: 'Eliptični trenažer', value: 1500, heavy: true },
+            { name: 'Veslačka sprava', value: 1200, heavy: true },
+            { name: 'Profesionalna fitnes sprava do 100 kg', value: 4000, heavy: true },
+            { name: 'Profesionalni frižider do 100 kg', value: 2000, heavy: true },
+            { name: 'Server ormar do 100 kg', value: 2000, heavy: true },
+            { name: 'Fotokopir aparat veliki do 100 kg', value: 2000, heavy: true },
+            { name: 'Kotao do 100 kg', value: 2000, heavy: true },
         ]
     },
     {
@@ -782,10 +787,13 @@ const prevozStavke = [
             { name: 'Saksija velika', value: 300, heavy: false },
             { name: 'Velika saksija sa zemljom', value: 500, heavy: false },
             { name: 'Ogledalo veliko', value: 400, heavy: false },
-            { name: 'Akvarijum', value: 700, heavy: false },
+            { name: 'Akvarijum', value: 700, heavy: true },
             { name: 'Kolica za bebe', value: 300, heavy: false },
             { name: 'Invalidska kolica', value: 500, heavy: false },
-            { name: 'Veliki roštilj', value: 800, heavy: false },
+            { name: 'Veliki roštilj', value: 800, heavy: true },
+            { name: 'Klima uređaj', value: 400, heavy: false },
+            { name: 'Vrata', value: 300, heavy: true },
+            { name: 'Prozori', value: 300, heavy: true },
         ]
     },
 ];
