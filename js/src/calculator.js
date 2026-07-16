@@ -212,6 +212,7 @@ const selidbaLicneStvariNamestaj = [
         items: [
             { name: 'Kupatilski ormarić', value: 500, heavy: false },
             { name: 'Bojler', value: 700, heavy: true },
+            { name: 'Veš mašina', value: 700, heavy: true },
         ]
     },
     {
